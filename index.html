@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Work Inspection Monitoring System</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar styling for textareas */
+        textarea::-webkit-scrollbar {
+            width: 6px;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Header Banner -->
+        <div class="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-800 text-white rounded-t-2xl p-6 sm:p-8 shadow-lg">
+            <div class="flex items-center justify-between">
+                <div>
+                    <span class="bg-blue-500/30 text-blue-100 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Bangladesh Sustainable Recovery,Emergency Preparedness and Response 
+project (B-STRONG)</span>
+                    <h1 class="text-2xl sm:text-3xl font-bold mt-2">Field Work Inspection Monitoring System</h1>
+                    <p class="text-blue-100 text-sm sm:text-base mt-1">Local Government Engineering Department (LGED).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Card -->
+        <div class="bg-white rounded-b-2xl shadow-xl p-6 sm:p-10 border border-slate-100">
+            <form id="inspectionForm" onsubmit="handleFormSubmit(event)" class="space-y-8">
+                
+                <!-- SECTION 1: Personal & Official Information -->
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 border-b pb-2 mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        Site Visitor Information
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Full Name -->
+                        <div>
+                            <label for="name" class="block text-sm font-semibold text-slate-700 mb-1">Full Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="name" required placeholder="e.g. Tofayel Ahmed" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm">
+                        </div>
+
+                        <!-- Designation -->
+                        <div>
+                            <label for="designation" class="block text-sm font-semibold text-slate-700 mb-1">Designation <span class="text-red-500">*</span></label>
+                            <input type="text" id="designation" required placeholder="e.g. IT Consultant" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm">
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-slate-700 mb-1">Email Address <span class="text-red-500">*</span></label>
+                            <input type="email" id="email" required placeholder="e.g. engr.tofayelahmed@gmail.com" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm">
+                        </div>
+
+                        <!-- Mobile Number -->
+                        <div>
+                            <label for="mobile" class="block text-sm font-semibold text-slate-700 mb-1">Mobile Number <span class="text-red-500">*</span></label>
+                            <input type="tel" id="mobile" required pattern="[0-9]{11}" placeholder="e.g. 01714006515" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm">
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Gender <span class="text-red-500">*</span></label>
+                            <div class="flex items-center gap-6 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                                <label class="flex items-center gap-2 cursor-pointer text-sm text-slate-700">
+                                    <input type="radio" name="gender" value="Male" required class="w-4 h-4 text-blue-600 focus:ring-blue-500 border-slate-300">
+                                    Male
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer text-sm text-slate-700">
+                                    <input type="radio" name="gender" value="Female" required class="w-4 h-4 text-blue-600 focus:ring-blue-500 border-slate-300">
+                                    Female
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer text-sm text-slate-700">
+                                    
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: Major Component -->
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 border-b pb-2 mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        Major Component <span class="text-red-500">*</span>
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-60 overflow-y-auto pr-2 border border-slate-200 rounded-lg p-3 bg-slate-50">
+                        <label class="flex items-start gap-2 p-2 rounded border border-slate-200 bg-white hover:bg-blue-50/50 cursor-pointer text-xs font-medium text-slate-700">
+                            <input type="radio" name="majorComponent" value="Re-Construction of Multipurpose Disaster Shelter" required class="mt-0.5 text-blue-600">
+                            Re-Construction of Multipurpose Disaster Shelter
+                        </label>
+                        <label class="flex items-start gap-2 p-2 rounded border border-slate-200 bg-white hover:bg-blue-50/50 cursor-pointer text-xs font-medium text-slate-700">
+                            <input type="radio" name="majorComponent" value="Capacity Enhancement of Existing Shelter" class="mt-0.5 text-blue-600">
+                            Capacity Enhancement of Existing Shelter
+                        </label>
+                        <label class="flex items-start gap-2 p-2 rounded border border-slate-200 bg-white hover:bg-blue-50/50 cursor-pointer text-xs font-medium text-slate-700">
+                            <input type="radio" name="majorComponent" value="Completion of incomplete MDSP Shelters" class="mt-0.5 text-blue-600">
+                            Completion of Incomplete MDSP Shelters
+                        </label>
+                        <label class="flex items-start gap-2 p-2 rounded border border-slate-200 bg-white hover:bg-blue-50/50 cursor-pointer text-xs font-medium text-slate-700">
+                            <input type="radio" name="majorComponent" value="Rehabilitation of Existing School" class="mt-0.5 text-blue-600">
+                            Rehabilitation of Existing School
+                        </label>
+                        <label class="flex items-start gap-2 p-2 rounded border border-slate-200 bg-white hover:bg-blue-50/50 cursor-pointer text-xs font-medium text-slate-700">
+                            <input type="radio" name="majorComponent" value="Rehabilitation of Emergency Evacuation Rural Road" class="mt-0.5 text-blue-600">
+                            Rehabilitation of Emergency Evacuation Rural Road
+                        </label>
+                        <label class="flex items-start gap-2 p-2 rounded border border-slate-200 bg-white hover:bg-blue-50/50 cursor-pointer text-xs font-medium text-slate-700">
+                            <input type="radio" name="majorComponent" value="Re-Construction of Box Culvert" class="mt-0.5 text-blue-600">
+                            Re-Construction of Box Culvert
+                        </label>
+                        <label class="flex items-start gap-2 p-2 rounded border border-slate-200 bg-white hover:bg-blue-50/50 cursor-pointer text-xs font-medium text-slate-700">
+                            <input type="radio" name="majorComponent" value="Re-Construction of Bridge" class="mt-0.5 text-blue-600">
+                            Re-Construction of Bridge
+                        </label>
+                        <label class="flex items-start gap-2 p-2 rounded border border-slate-200 bg-white hover:bg-blue-50/50 cursor-pointer text-xs font-medium text-slate-700">
+                            <input type="radio" name="majorComponent" value="Re-Excavation of Canal" class="mt-0.5 text-blue-600">
+                            Re-Excavation of Canal
+                        </label>
+                        <label class="flex items-start gap-2 p-2 rounded border border-slate-200 bg-white hover:bg-blue-50/50 cursor-pointer text-xs font-medium text-slate-700">
+                            <input type="radio" name="majorComponent" value="Rehabilitation of Rural Roads (GOB)" class="mt-0.5 text-blue-600">
+                            Rehabilitation of Rural Roads (GOB)
+                        </label>
+                        <label class="flex items-start gap-2 p-2 rounded border border-slate-200 bg-white hover:bg-blue-50/50 cursor-pointer text-xs font-medium text-slate-700">
+                            <input type="radio" name="majorComponent" value="Supply & Installation of Emergency Operation System for Upazilas (FSCD)" class="mt-0.5 text-blue-600">
+                            Supply & Installation of Emergency Operation System for Upazilas (FSCD)
+                        </label>
+                        <label class="flex items-start gap-2 p-2 rounded border border-slate-200 bg-white hover:bg-blue-50/50 cursor-pointer text-xs font-medium text-slate-700">
+                            <input type="radio" name="majorComponent" value="Installation of Lightning Protection Systems" class="mt-0.5 text-blue-600">
+                            Installation of Lightning Protection Systems
+                        </label>
+                        <label class="flex items-start gap-2 p-2 rounded border border-slate-200 bg-white hover:bg-blue-50/50 cursor-pointer text-xs font-medium text-slate-700">
+                            <input type="radio" name="majorComponent" value="Supply of Fire Fighting Equipment for FSCD" class="mt-0.5 text-blue-600">
+                            Supply of Fire Fighting Equipment for FSCD
+                        </label>
+                        <label class="flex items-start gap-2 p-2 rounded border border-slate-200 bg-white hover:bg-blue-50/50 cursor-pointer text-xs font-medium text-slate-700">
+                            <input type="radio" name="majorComponent" value="Supply of Education Materials (School)" class="mt-0.5 text-blue-600">
+                            Supply of Education Materials (School)
+                        </label>
+                        <label class="flex items-start gap-2 p-2 rounded border border-slate-200 bg-white hover:bg-blue-50/50 cursor-pointer text-xs font-medium text-slate-700">
+                            <input type="radio" name="majorComponent" value="Enhancement of Laboratory Facilities Including Equipment" class="mt-0.5 text-blue-600">
+                            Enhancement of Laboratory Facilities Including Equipment
+                        </label>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: Location Hierarchy (Cascading Dropdowns) -->
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 border-b pb-2 mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        Location Details
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        
+                        <!-- Division (Locked to Chattogram) -->
+                        <div>
+                            <label for="division" class="block text-sm font-semibold text-slate-700 mb-1">Division</label>
+                            <select id="division" disabled class="w-full px-3 py-2.5 rounded-lg border border-slate-300 bg-slate-100 text-slate-600 cursor-not-allowed text-sm">
+                                <option value="Chattogram" selected>Chattogram</option>
+                            </select>
+                        </div>
+
+                        <!-- Region -->
+                        <div>
+                            <label for="region" class="block text-sm font-semibold text-slate-700 mb-1">Region <span class="text-red-500">*</span></label>
+                            <select id="region" required onchange="handleRegionChange()" class="w-full px-3 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm bg-white">
+                                <option value="" disabled selected>Select Region</option>
+                                <option value="Chattogram">Chattogram</option>
+                                <option value="Noakhali">Noakhali</option>
+                                <option value="Cumilla">Cumilla</option>
+                            </select>
+                        </div>
+
+                        <!-- District -->
+                        <div>
+                            <label for="district" class="block text-sm font-semibold text-slate-700 mb-1">District <span class="text-red-500">*</span></label>
+                            <select id="district" required disabled onchange="handleDistrictChange()" class="w-full px-3 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm disabled:bg-slate-100 disabled:cursor-not-allowed bg-white">
+                                <option value="" disabled selected>Select District</option>
+                            </select>
+                        </div>
+
+                        <!-- Upazila -->
+                        <div>
+                            <label for="upazila" class="block text-sm font-semibold text-slate-700 mb-1">Upazila <span class="text-red-500">*</span></label>
+                            <select id="upazila" required disabled class="w-full px-3 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm disabled:bg-slate-100 disabled:cursor-not-allowed bg-white">
+                                <option value="" disabled selected>Select Upazila</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+		<!-- GPS Location Field -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700">GPS Coordinates <span class="text-red-500">*</span></label>
+                                <p class="text-xs text-slate-500">Capture exact latitude and longitude of the site.</p>
+                            </div>
+                            <button type="button" onclick="getGPSLocation()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-lg shadow transition flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                Get Current Location
+                            </button>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
+                            <input type="text" id="gpsLocation" readonly required placeholder="Click 'Get Current Location'" class="w-full px-4 py-2 rounded-lg border border-slate-300 bg-white text-sm font-mono text-slate-700 outline-none">
+                            <a id="mapLink" href="#" target="_blank" class="hidden items-center justify-center gap-1 text-xs text-blue-600 font-semibold underline hover:text-blue-800 self-center">
+                                View on Google Maps 
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                        <p id="gpsStatus" class="text-xs mt-2 hidden"></p>
+                    </div>
+                </div>
+
+                <!-- SECTION 4: Field Observation & Reports -->
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 border-b pb-2 mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Inspection Details
+                    </h2>
+                    <div class="space-y-4">
+			<!-- Scheme/Package ID -->
+                        <div>
+                            <label for="Scheme/Package ID" class="block text-sm font-semibold text-slate-700 mb-1">Scheme/Package ID <span class="text-red-500">*</span></label>
+                            <textarea id="Scheme/Package ID" required rows="1" placeholder="Scheme/Package ID..." class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm"></textarea>
+                        </div>
+                        <!-- Description of Work -->
+                        <div>
+                            <label for="description" class="block text-sm font-semibold text-slate-700 mb-1">Description of Work <span class="text-red-500">*</span></label>
+                            <textarea id="description" required rows="2" placeholder="Provide Shortly about the work being inspected..." class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm"></textarea>
+                        </div>
+
+                        <!-- Work Status -->
+                        <div>
+                            <label for="workStatus" class="block text-sm font-semibold text-slate-700 mb-1">Work Status <span class="text-red-500">*</span></label>
+                            <textarea id="workStatus" required rows="2" placeholder="Describe the current operational status..." class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm"></textarea>
+                        </div>
+
+                        <!-- Progress -->
+                        <div>
+                            <label for="progress" class="block text-sm font-semibold text-slate-700 mb-1">Progress <span class="text-red-500">*</span></label>
+                            <textarea id="progress" required rows="2" placeholder="Detail the physical and financial percentage or milestones achieved..." class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm"></textarea>
+                        </div>
+
+                        <!-- Observation -->
+                        <div>
+                            <label for="observation" class="block text-sm font-semibold text-slate-700 mb-1">Observation <span class="text-red-500">*</span></label>
+                            <textarea id="observation" required rows="3" placeholder="Note down key findings, quality checks, or issues identified..." class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm"></textarea>
+                        </div>
+
+                        <!-- Recommendation -->
+                        <div>
+                            <label for="recommendation" class="block text-sm font-semibold text-slate-700 mb-1">Recommendation <span class="text-red-500">*</span></label>
+                            <textarea id="recommendation" required rows="3" placeholder="Suggest required actions or corrective measures..." class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm"></textarea>
+                        </div>
+                    </div>
+                </div>
+		<!-- SECTION 5: Site Visit Pictures (Capture / Upload) -->
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 border-b pb-2 mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        Site Visit Pictures <span class="text-red-500">*</span>
+                    </h2>
+                    <p class="text-xs text-slate-500 mb-4">Upload or capture up to 4 photos from the site visit.</p>
+
+                    <div class="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-xl p-6 text-center bg-slate-50 transition cursor-pointer" onclick="document.getElementById('siteImages').click()">
+                        <svg class="mx-auto h-12 w-12 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <div class="mt-2 text-sm font-semibold text-slate-700">Click to capture or upload images</div>
+                        <p class="text-xs text-slate-500 mt-1">PNG, JPG, JPEG up to 10MB each (Max 4 photos)</p>
+                        <input type="file" id="siteImages" accept="image/*" capture="environment" multiple onchange="handleImageUpload(event)" class="hidden">
+                    </div>
+
+                    <!-- Image Preview Container -->
+                    <div id="imagePreviewContainer" class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4 hidden"></div>
+                </div>
+                <!-- Form Buttons -->
+                <div class="flex items-center justify-end gap-4 pt-6 border-t border-slate-200">
+                    <button type="button" onclick="handleReset()" class="px-6 py-2.5 rounded-lg border border-slate-300 text-slate-700 font-semibold hover:bg-slate-100 transition text-sm">
+                        Reset Form
+                    </button>
+                    <button type="submit" class="px-8 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-md transition text-sm flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Submit Inspection Report
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Submission Modal Notification -->
+    <div id="successModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl text-center space-y-4">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">Form Submitted Successfully!</h3>
+            <p class="text-sm text-slate-600">The field work inspection report has been recorded successfully into the system database.</p>
+            <button onclick="closeModal()" class="w-full py-2.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition">Close</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Exact location data hierarchy mapping
+        const locationData = {
+            "Chattogram": {
+                "Chattogram": [
+                    "Sandwip", "Anwara", "Banshkhali", "Boalkhali", "Chandanaish",
+                    "Fatikchhari", "Hathazari", "Lohagara", "Mirsharai", "Patiya",
+                    "Raozan", "Rangunia", "Satkania", "Karnafuli", "Sitakunda"
+                ]
+            },
+            "Noakhali": {
+                "Noakhali": [
+                    "Noakhali Sadar", "Begumganj", "Chatkhil", "Sonaimuri", 
+                    "Subarnachar", "Companiganj", "Kabirhat"
+                ],
+                "Laxmipur": [
+                    "Laxmipur Sadar", "Ramganj", "Kamalnagar", "Ramgati"
+                ],
+                "Feni": [
+                    "Fulgazi", "Sonagazi", "Parshuram", "Chhagalnaiya", "Daganbhuiyan"
+                ]
+            },
+            "Cumilla": {
+                "Cumilla": [
+                    "Burichang", "Barura", "Brahmanpara", "Debidwar", "Muradnagar", "Chauddagram"
+                ],
+                "Brahmanbaria": [
+                    "Brahmanbaria Sadar", "Bijoynagar", "Kasba", "Akhaura"
+                ]
+            }
+        };
+
+        // Triggered when Region dropdown changes
+        function handleRegionChange() {
+            const regionSelect = document.getElementById("region");
+            const districtSelect = document.getElementById("district");
+            const upazilaSelect = document.getElementById("upazila");
+            
+            const selectedRegion = regionSelect.value;
+
+            // Reset District and Upazila controls
+            districtSelect.innerHTML = '<option value="" disabled selected>Select District</option>';
+            upazilaSelect.innerHTML = '<option value="" disabled selected>Select Upazila</option>';
+            upazilaSelect.disabled = true;
+
+            if (selectedRegion && locationData[selectedRegion]) {
+                const districts = Object.keys(locationData[selectedRegion]);
+                districts.forEach(district => {
+                    const option = document.createElement("option");
+                    option.value = district;
+                    option.textContent = district;
+                    districtSelect.appendChild(option);
+                });
+                districtSelect.disabled = false;
+            } else {
+                districtSelect.disabled = true;
+            }
+        }
+
+        // Triggered when District dropdown changes
+        function handleDistrictChange() {
+            const regionSelect = document.getElementById("region");
+            const districtSelect = document.getElementById("district");
+            const upazilaSelect = document.getElementById("upazila");
+
+            const selectedRegion = regionSelect.value;
+            const selectedDistrict = districtSelect.value;
+
+            // Reset Upazila control
+            upazilaSelect.innerHTML = '<option value="" disabled selected>Select Upazila</option>';
+
+            if (selectedRegion && selectedDistrict && locationData[selectedRegion][selectedDistrict]) {
+                const upazilas = locationData[selectedRegion][selectedDistrict];
+                upazilas.forEach(upazila => {
+                    const option = document.createElement("option");
+                    option.value = upazila;
+                    option.textContent = upazila;
+                    upazilaSelect.appendChild(option);
+                });
+                upazilaSelect.disabled = false;
+            } else {
+                upazilaSelect.disabled = true;
+            }
+        }
+
+        // Form Reset Handler
+        function handleReset() {
+            document.getElementById("inspectionForm").reset();
+            
+            const districtSelect = document.getElementById("district");
+            const upazilaSelect = document.getElementById("upazila");
+
+            districtSelect.innerHTML = '<option value="" disabled selected>Select District</option>';
+            districtSelect.disabled = true;
+
+            upazilaSelect.innerHTML = '<option value="" disabled selected>Select Upazila</option>';
+            upazilaSelect.disabled = true;
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            // Show custom modal instead of alert()
+            const modal = document.getElementById("successModal");
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+        }
+
+        // Close Modal
+        function closeModal() {
+            const modal = document.getElementById("successModal");
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+            handleReset();
+        }
+    </script>
+</body>
+</html>
